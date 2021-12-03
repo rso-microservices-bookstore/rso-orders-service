@@ -3,10 +3,6 @@ import com.kumuluz.ee.configuration.cdi.ConfigBundle;
 
 import javax.enterprise.context.ApplicationScoped;
 
-/**
- * @author Tilen Faganel
- * @since 2.3.0
- */
 @ConfigBundle("orders")
 @ApplicationScoped
 public class OrdersProperties {

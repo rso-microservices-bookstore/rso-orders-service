@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>models</module>
-        <module>orders</module>
+        <module>orders-api</module>
+        <module>orders-persistance</module>
     </modules>
 
     <properties>

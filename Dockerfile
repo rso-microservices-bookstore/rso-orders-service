@@ -4,8 +4,8 @@ RUN mkdir /app
 
 WORKDIR /app
 
-ADD ./catalogue/target/catalogue-1.0-SNAPSHOT.jar /app
+ADD ./orders-api/target/orders-1.0-SNAPSHOT.jar /app
 
 EXPOSE 3000
 
-CMD ["java", "-jar", "catalogue-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "orders-1.0-SNAPSHOT.jar"]
