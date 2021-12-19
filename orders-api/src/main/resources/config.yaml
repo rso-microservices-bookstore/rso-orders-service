@@ -13,3 +13,17 @@ kumuluzee:
       password: postgres
       pool:
         max-size: 1
+
+  health:
+    checks:
+      data-source-health-check:
+        type: liveness
+        jndi-name: jdbc/ImageMetadataDS
+    metrics:
+      web-instrumentation:
+        - name: images-endpoint
+          url-pattern: /v1/images/*
+
+rest-properties:
+    maintenance-mode: false
+    broken: false

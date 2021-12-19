@@ -1,4 +1,4 @@
-package si.fri.rso.orders;
+package si.fri.rso.orders.resources;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
