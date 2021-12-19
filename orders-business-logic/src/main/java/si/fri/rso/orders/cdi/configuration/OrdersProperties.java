@@ -1,4 +1,4 @@
-package si.fri.rso.orders;
+package si.fri.rso.orders.cdi.configuration;
 import com.kumuluz.ee.configuration.cdi.ConfigBundle;
 
 import javax.enterprise.context.ApplicationScoped;

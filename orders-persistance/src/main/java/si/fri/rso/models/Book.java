@@ -1,5 +1,4 @@
-
-package si.fri.rso.orders.models;
+package si.fri.rso.models;
 
 import javax.persistence.*;
 import java.util.List;

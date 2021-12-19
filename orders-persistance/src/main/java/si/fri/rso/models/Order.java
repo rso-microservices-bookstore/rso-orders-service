@@ -1,4 +1,6 @@
-package si.fri.rso.orders.models;
+package si.fri.rso.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,6 +20,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name="book_id")
+    @JsonIgnore
     private Book book;
 
     public Integer getId() {
@@ -43,4 +46,6 @@ public class Order {
     public void setBook(Book book) {
         this.book = book;
     }
+
+
 }

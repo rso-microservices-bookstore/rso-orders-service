@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="orders-persistance" />
         <module name="orders-api" />
+        <module name="orders-business-logic" />
       </profile>
     </annotationProcessing>
   </component>

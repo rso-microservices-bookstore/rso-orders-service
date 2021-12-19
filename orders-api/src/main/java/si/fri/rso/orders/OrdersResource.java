@@ -8,8 +8,9 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Date;
-import si.fri.rso.orders.models.Book;
-import si.fri.rso.orders.models.Order;
+import si.fri.rso.models.Book;
+import si.fri.rso.models.Order;
+import si.fri.rso.orders.cdi.configuration.OrdersProperties;
 
 @Path("/orders")
 @RequestScoped
@@ -68,9 +69,27 @@ public class OrdersResource {
         em.getTransaction().begin();
 
         em.persist(o);
-
+        em.flush();
         em.getTransaction().commit();
 
         return Response.status(Response.Status.CREATED).entity(o).build();
+    }
+
+
+    @DELETE
+    @Path("/{id}")
+    public Response finishOrder(@PathParam("id") Integer id) {
+
+        Order o = em.find(Order.class, id);
+
+        if (o == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+
+        em.getTransaction().begin();
+        em.remove(o);
+        em.flush();
+        em.getTransaction().commit();
+
+        return Response.ok(o).build();
     }
 }

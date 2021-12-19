@@ -9,8 +9,8 @@
 
         <non-jta-data-source>jdbc/BooksDS</non-jta-data-source>
 
-        <class>si.fri.rso.orders.models.Book</class>
-        <class>si.fri.rso.orders.models.Order</class>
+        <class>si.fri.rso.models.Book</class>
+        <class>si.fri.rso.models.Order</class>
 
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
