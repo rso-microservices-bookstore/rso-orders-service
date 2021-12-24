@@ -8,6 +8,11 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Date;
+
+import org.eclipse.microprofile.metrics.ConcurrentGauge;
+import org.eclipse.microprofile.metrics.Meter;
+import org.eclipse.microprofile.metrics.annotation.Metered;
+import org.eclipse.microprofile.metrics.annotation.Metric;
 import si.fri.rso.models.Book;
 import si.fri.rso.models.Order;
 import si.fri.rso.orders.cdi.configuration.OrdersProperties;
@@ -24,6 +29,13 @@ public class OrdersResource {
     @Inject
     private OrdersProperties ordersProperties;
 
+    @Inject
+    @Metric(name = "orders_meter")
+    private Meter ordersMeter;
+
+    @Inject
+    @Metric(name = "orders_counter")
+    private ConcurrentGauge ordersCounter;
     /**
      * <p>Queries the database and returns a specific order based on the given id.</p>
      *
@@ -33,7 +45,6 @@ public class OrdersResource {
     @GET
     @Path("/{id}")
     public Response getOrder(@PathParam("id") Integer id) {
-
         Order o = em.find(Order.class, id);
 
         if (o == null)
@@ -50,6 +61,8 @@ public class OrdersResource {
      */
     @POST
     public Response placeOrder(Book b) {
+        ordersMeter.mark();
+        ordersCounter.inc();
 
         if (b == null || b.getId() == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
@@ -78,9 +91,10 @@ public class OrdersResource {
 
     @DELETE
     @Path("/{id}")
+    @Metered(name = "orders_deleting_meter")
     public Response finishOrder(@PathParam("id") Integer id) {
-
         Order o = em.find(Order.class, id);
+        ordersCounter.dec();
 
         if (o == null)
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -92,4 +106,6 @@ public class OrdersResource {
 
         return Response.ok(o).build();
     }
+
+
 }

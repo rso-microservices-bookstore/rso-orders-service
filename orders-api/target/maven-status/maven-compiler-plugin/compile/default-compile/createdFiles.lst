@@ -1,2 +1,4 @@
-si/fri/rso/orders/OrdersResource.class
+si/fri/rso/orders/health/CustomHealthCheck.class
+si/fri/rso/orders/resources/DemoResource.class
 si/fri/rso/orders/OrdersApplication.class
+si/fri/rso/orders/resources/OrdersResource.class
