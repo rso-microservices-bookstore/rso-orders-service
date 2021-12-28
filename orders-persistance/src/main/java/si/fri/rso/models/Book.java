@@ -4,13 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 
-@Entity
-@Table(name = "books")
-@NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
 public class Book {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String title;
@@ -18,9 +12,6 @@ public class Book {
     private String description;
 
     private String author;
-
-    @OneToMany(mappedBy="book")
-    private List<Order> bookOrders;
 
     public Integer getId() {
         return id;
@@ -52,13 +43,5 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public List<Order> getBookOrders() {
-        return bookOrders;
-    }
-
-    public void setBookOrders(List<Order> bookOrders) {
-        this.bookOrders = bookOrders;
     }
 }

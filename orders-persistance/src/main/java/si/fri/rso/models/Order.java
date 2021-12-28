@@ -17,11 +17,42 @@ public class Order {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
+    private int cartId;
+    private String name;
+    private String surname;
+    private String address;
 
-    @ManyToOne
-    @JoinColumn(name="book_id")
-    @JsonIgnore
-    private Book book;
+    public int getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public Integer getId() {
         return id;
@@ -38,14 +69,4 @@ public class Order {
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-
 }
