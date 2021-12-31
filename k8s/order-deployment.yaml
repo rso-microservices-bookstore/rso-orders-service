@@ -13,7 +13,7 @@ spec:
         app: orders-service
     spec:
       containers:
-        - image: andrazceh/orders-service:2021-12-29-01-17-50
+        - image: andrazceh/orders-service:2021-12-31-19-32-21
           name: orders-service
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
