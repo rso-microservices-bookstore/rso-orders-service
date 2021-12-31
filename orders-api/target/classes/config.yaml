@@ -1,11 +1,15 @@
 kumuluzee:
   name: orders-service
+  env:
+    name: dev
   version: 1.0.0
   server:
     base-url: http://localhost:3001
     http:
       port: 3001
-
+  config:
+    consul:
+      agent: http://35.196.140.237
   datasources:
     - jndi-name: jdbc/BooksDS
       connection-url: jdbc:postgresql://localhost:5432/postgres
@@ -28,3 +32,4 @@ kumuluzee:
 rest-properties:
     maintenance-mode: false
     broken: false
+    carts-url: http://localhost:3005

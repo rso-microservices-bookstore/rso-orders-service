@@ -1,13 +1,15 @@
 package si.fri.rso.orders.cdi.configuration;
 import com.kumuluz.ee.configuration.cdi.ConfigBundle;
+import com.kumuluz.ee.configuration.cdi.ConfigValue;
 
 import javax.enterprise.context.ApplicationScoped;
 
-@ConfigBundle("orders")
+@ConfigBundle("orders-properties")
 @ApplicationScoped
 public class OrdersProperties {
 
-    private String cartsUrl = "http://localhost:3002";
+    @ConfigValue(watch = true)
+    private String cartsUrl;
 
     public String getCartsUrl() {
         return cartsUrl;

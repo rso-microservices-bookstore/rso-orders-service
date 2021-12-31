@@ -15,6 +15,7 @@ import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.metrics.annotation.Metric;
 import si.fri.rso.models.Order;
 import si.fri.rso.orders.cdi.configuration.OrdersProperties;
+import si.fri.rso.orders.cdi.configuration.RestProperties;
 
 @Path("/orders")
 @RequestScoped
@@ -26,7 +27,7 @@ public class OrdersResource {
     private EntityManager em;
 
     @Inject
-    private OrdersProperties ordersProperties;
+    private RestProperties restProperties;
 
     @Inject
     @Metric(name = "orders_meter")
@@ -68,8 +69,8 @@ public class OrdersResource {
         }
         // Tu bo id kosarice
         Response cartResponse = ClientBuilder.newClient()
-                .target(ordersProperties.getCartsUrl()).path("carts").path(Integer.toString(o.getCartId())).request().get();
-
+                .target(restProperties.getCartsUrl()).path("carts").path(Integer.toString(o.getCartId())).request().get();
+        System.out.println(restProperties.getCartsUrl());
         if (!cartResponse.getStatusInfo().getFamily().equals(Response.Status.Family.SUCCESSFUL)) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

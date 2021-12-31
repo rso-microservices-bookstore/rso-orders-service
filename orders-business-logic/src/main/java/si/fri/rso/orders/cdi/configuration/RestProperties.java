@@ -14,6 +14,9 @@ public class RestProperties {
 
     private Boolean broken;
 
+    @ConfigValue(watch = true)
+    private String cartsUrl;
+
     public Boolean getMaintenanceMode() {
         return this.maintenanceMode;
     }
@@ -28,5 +31,13 @@ public class RestProperties {
 
     public void setBroken(final Boolean broken) {
         this.broken = broken;
+    }
+
+    public String getCartsUrl() {
+        return cartsUrl;
+    }
+
+    public void setCartsUrl(String catalogueUrl) {
+        this.cartsUrl = catalogueUrl;
     }
 }
